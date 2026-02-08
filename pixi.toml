@@ -18,6 +18,14 @@ zellij = "*"
 atuin = "*"
 direnv = "*"
 fish = "*"
+starship = "*"
+zoxide = "*"
+
+# CLI tools
+awscli = "*"
+just = "*"
+gh = "*"
+k9s = "*"
 
 # Language toolchains
 go = "*"

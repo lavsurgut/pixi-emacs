@@ -7,8 +7,12 @@ if status is-interactive
 
     alias emacs "TERM=xterm-256color command emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 
+    starship init fish | source
     atuin init fish | source
+    zoxide init fish | source
     direnv hook fish | source
+
+    alias zi "z -i"
 
     fish_vi_key_bindings
     set fish_vi_force_cursor
