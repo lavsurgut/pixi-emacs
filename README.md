@@ -37,6 +37,14 @@ pixi run ze
 
 This opens a zellij session called `pixi-emacs` with fish shell, atuin history search (ctrl+r), and direnv hooks — all pre-configured.
 
+You can also start a named session:
+
+```sh
+pixi run ze valery
+```
+
+This creates (or reattaches to) a session called `valery` instead of the default `pixi-emacs`.
+
 - **Detach**: `Ctrl+Super+d`
 - **Reattach**: `pixi run ze` (auto-reattaches to existing session)
 - **New tab**: `Ctrl+Super+t`
