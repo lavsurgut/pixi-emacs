@@ -4,7 +4,7 @@ Doom Emacs dev environment via [Pixi](https://pixi.sh) — no Docker, no system 
 
 Supports **Python**, **Rust**, **Go**, and **Clojure** out of the box — with LSP, tree-sitter, and format-on-save for each.
 
-Works on macOS (ARM/Intel) and Linux x86_64. Emacs is built from source as a terminal-only binary, everything else comes from conda-forge.
+Works on macOS (ARM/Intel) and Linux (x86_64/aarch64). Emacs is built from source as a terminal-only binary, everything else comes from conda-forge. Includes Claude Code for AI-assisted development.
 
 ## Prerequisites
 
@@ -21,10 +21,11 @@ pixi run setup
 ```
 
 This will:
-1. Install all dependencies from conda-forge (including zellij, atuin, direnv, fish)
+1. Install all dependencies from conda-forge (including zellij, atuin, direnv, fish, nodejs)
 2. Download and compile Emacs 30.1 (terminal-only, ~5-10 min first time)
-3. Download Clojure tools (clojure-lsp, babashka, clojure on macOS)
-4. Clone Doom Emacs and run `doom install`
+3. Download Clojure tools (clojure-lsp, babashka, clojure)
+4. Install Claude Code (AI coding assistant)
+5. Clone Doom Emacs and run `doom install` + `doom sync`
 
 ## Usage
 
@@ -100,6 +101,24 @@ All languages have LSP, tree-sitter, and format-on-save enabled.
 - `SPC m '` (or `, '`) — CIDER jack-in
 - `, e f` — eval form, `, e b` — eval buffer
 - Structural editing via evil-cleverparens: `H`/`L` for sexp navigation, `(`/`)` for up-sexp
+
+## AI tools
+
+### Claude Code
+
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code) is installed automatically during setup via npm. Run it from inside a zellij session:
+
+```sh
+claude
+```
+
+Set your API key (once per machine):
+
+```sh
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+Or add it to an `.envrc` file in your project directory — direnv will load it automatically.
 
 ## Configuration
 
