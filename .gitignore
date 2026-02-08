@@ -1,0 +1,8 @@
+# Pixi environment
+.pixi/
+
+# Doom Emacs installation (cloned at setup time)
+.doomemacs/
+
+# Emacs source build cache
+.emacs-src/

@@ -1,0 +1,36 @@
+[workspace]
+name = "pixi-emacs"
+description = "Doom Emacs dev environment via Pixi — no Docker, no system packages"
+version = "0.1.0"
+platforms = ["osx-arm64", "osx-64", "linux-64"]
+channels = ["conda-forge"]
+
+[dependencies]
+# Runtime deps for Doom Emacs
+git = "*"
+ripgrep = "*"
+fd-find = "*"
+libvterm = "*"
+cmake = "*"
+
+# Build deps for compiling Emacs from source
+autoconf = "*"
+automake = "*"
+make = "*"
+pkg-config = "*"
+texinfo = "*"
+ncurses = "*"
+gnutls = "*"
+libxml2 = "*"
+libtree-sitter = "*"
+libglib = "*"
+libjpeg-turbo = "*"
+giflib = "*"
+libtiff = "*"
+libpng = "*"
+
+[tasks]
+build-emacs = "bash scripts/build-emacs.sh"
+install-doom = { cmd = "bash scripts/install-doom.sh", depends-on = ["build-emacs"] }
+doom-sync = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs $PIXI_PROJECT_ROOT/.doomemacs/bin/doom sync"
+emacs = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs emacs -nw"
