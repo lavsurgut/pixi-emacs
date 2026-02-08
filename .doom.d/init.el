@@ -5,7 +5,7 @@
 (doom! :input
 
        :completion
-       (company +childframe)
+       (corfu +icons +orderless)
        (vertico +icons)
 
        :ui
@@ -14,10 +14,8 @@
        hl-todo
        modeline
        ophints
-       (popup +defaults)
        (vc-gutter +pretty)
        vi-tilde-fringe
-       workspaces
 
        :editor
        (evil +everywhere)
@@ -25,12 +23,11 @@
        fold
        (format +onsave)
        snippets
-       word-wrap
 
        :emacs
-       (dired +icons)
+       (dired +dirvish +icons)
        electric
-       (undo +tree)
+       undo
        vc
 
        :term
@@ -40,13 +37,20 @@
        syntax
 
        :tools
+       direnv
        (eval +overlay)
        lookup
+       lsp
        magit
        tree-sitter
 
+       :os
+       (tty +osc)
+
        :lang
+       (clojure +lsp +tree-sitter)
        emacs-lisp
+       (go +lsp +tree-sitter)
        json
        markdown
        (org +pretty)
@@ -54,7 +58,7 @@
        rest
        (rust +lsp +tree-sitter)
        sh
-       yaml
+       (yaml +lsp +tree-sitter)
 
        :config
        (default +bindings +smartparens))

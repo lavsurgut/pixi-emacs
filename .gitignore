@@ -6,3 +6,15 @@
 
 # Emacs source build cache
 .emacs-src/
+
+# Fish runtime state
+config/fish/fish_history
+config/fish/fish_variables
+config/fish/completions/
+config/fish/conf.d/
+
+# Atuin runtime state
+config/atuin/history.db*
+
+# Zellij runtime state
+config/zellij/permissions.kdl
