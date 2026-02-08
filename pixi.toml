@@ -38,12 +38,6 @@ giflib = "*"
 libtiff = "*"
 libpng = "*"
 
-[target.linux-64.dependencies]
-clojure = "*"
-
-[target.linux-aarch64.dependencies]
-clojure = "*"
-
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
 install-clojure-tools = "bash scripts/install-clojure-tools.sh"
