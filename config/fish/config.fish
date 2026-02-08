@@ -3,6 +3,7 @@ if status is-interactive
     set -gx DOOMDIR $PIXI_PROJECT_ROOT/.doom.d
     set -gx EMACSDIR $PIXI_PROJECT_ROOT/.doomemacs
     set -gx TERMINFO_DIRS $CONDA_PREFIX/share/terminfo:/usr/share/terminfo:/usr/lib/terminfo
+    set -gx LD_LIBRARY_PATH $CONDA_PREFIX/lib $LD_LIBRARY_PATH
 
     alias emacs "TERM=xterm-256color command emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 
