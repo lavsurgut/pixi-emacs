@@ -30,6 +30,7 @@ k9s = "*"
 # Language toolchains
 go = "*"
 nodejs = "*"
+openjdk = ">=21,<22"
 
 # Build deps for compiling Emacs from source
 autoconf = "*"
