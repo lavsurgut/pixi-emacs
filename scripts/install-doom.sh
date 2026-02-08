@@ -7,4 +7,4 @@ fi
 
 DOOMDIR="$PIXI_PROJECT_ROOT/.doom.d" \
 EMACSDIR="$PIXI_PROJECT_ROOT/.doomemacs" \
-  "$PIXI_PROJECT_ROOT/.doomemacs/bin/doom" install --no-config
+  "$PIXI_PROJECT_ROOT/.doomemacs/bin/doom" install --no-config --env

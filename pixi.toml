@@ -33,4 +33,4 @@ libpng = "*"
 build-emacs = "bash scripts/build-emacs.sh"
 install-doom = { cmd = "bash scripts/install-doom.sh", depends-on = ["build-emacs"] }
 doom-sync = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs $PIXI_PROJECT_ROOT/.doomemacs/bin/doom sync"
-emacs = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs emacs -nw"
+emacs = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
