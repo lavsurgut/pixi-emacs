@@ -2,6 +2,7 @@ if status is-interactive
     set -gx DIRENV_LOG_FORMAT ""
     set -gx DOOMDIR $PIXI_PROJECT_ROOT/.doom.d
     set -gx EMACSDIR $PIXI_PROJECT_ROOT/.doomemacs
+    set -gx TERMINFO_DIRS $CONDA_PREFIX/share/terminfo:/usr/share/terminfo:/usr/lib/terminfo
 
     alias emacs "emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 
