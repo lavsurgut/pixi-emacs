@@ -2,7 +2,7 @@
 name = "pixi-emacs"
 description = "Doom Emacs dev environment via Pixi — no Docker, no system packages"
 version = "0.1.0"
-platforms = ["osx-arm64", "osx-64", "linux-64"]
+platforms = ["osx-arm64", "osx-64", "linux-64", "linux-aarch64"]
 channels = ["conda-forge"]
 
 [dependencies]
@@ -41,11 +41,14 @@ libpng = "*"
 [target.linux-64.dependencies]
 clojure = "*"
 
+[target.linux-aarch64.dependencies]
+clojure = "*"
+
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
 install-clojure-tools = "bash scripts/install-clojure-tools.sh"
 install-doom = { cmd = "bash scripts/install-doom.sh", depends-on = ["build-emacs"] }
-setup = { cmd = "echo 'Setup complete!'", depends-on = ["install-doom", "install-clojure-tools"] }
+setup = { cmd = "echo done", depends-on = ["install-doom", "install-clojure-tools"] }
 doom-sync = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs $PIXI_PROJECT_ROOT/.doomemacs/bin/doom sync"
 emacs = "XDG_CONFIG_HOME=$PIXI_PROJECT_ROOT/config DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 ze = "XDG_CONFIG_HOME=$PIXI_PROJECT_ROOT/config SHELL=$(which fish) zellij --config $PIXI_PROJECT_ROOT/config/zellij/config.kdl attach --create pixi-emacs"
