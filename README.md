@@ -23,9 +23,8 @@ pixi run setup
 This will:
 1. Install all dependencies from conda-forge (including zellij, atuin, direnv, fish, nodejs)
 2. Download and compile Emacs 30.1 (terminal-only, ~5-10 min first time)
-3. Download Clojure tools (clojure-lsp, babashka, clojure)
-4. Install Claude Code (AI coding assistant)
-5. Clone Doom Emacs and run `doom install` + `doom sync`
+3. Install CLI tools (clojure-lsp, babashka, clojure, saml2aws, Claude Code)
+4. Clone Doom Emacs and run `doom install` + `doom sync`
 
 ## Usage
 
@@ -127,6 +126,56 @@ export ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 Or add it to an `.envrc` file in your project directory — direnv will load it automatically.
+
+## Adding a new tool
+
+There are two ways to add tools, depending on whether they're available on conda-forge:
+
+### conda-forge packages (preferred)
+
+If the tool is on conda-forge, add it to `pixi.toml` under `[dependencies]`:
+
+```toml
+[dependencies]
+mytool = "*"
+```
+
+Pixi handles versioning, platform resolution, and caching — no custom scripts needed. This is how zellij, atuin, gh, k9s, and other tools are installed.
+
+### Custom installers
+
+For tools not on conda-forge (GitHub release binaries, npm packages, tarballs needing patching), drop a script into `scripts/install-tools/`. It will be picked up automatically by `pixi run install-tools`.
+
+The script should be self-contained:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v mytool &>/dev/null; then
+  echo "mytool already installed: $(mytool --version)"
+else
+  echo "Installing mytool..."
+  # download and install into $CONDA_PREFIX/bin
+  echo "mytool installed: $(mytool --version)"
+fi
+```
+
+You can also run a single installer directly:
+
+```sh
+bash scripts/install-tools/mytool.sh
+```
+
+## Clean rebuild
+
+To remove all generated files and start fresh:
+
+```sh
+pixi run clean
+```
+
+This removes `.emacs-src`, `.doomemacs`, and `.pixi`. Your Doom config (`.doom.d/`) is preserved. Then run `pixi run setup` to rebuild everything.
 
 ## Configuration
 
