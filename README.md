@@ -44,11 +44,18 @@ pixi run ze valery
 
 This creates (or reattaches to) a session called `valery` instead of the default `pixi-emacs`.
 
-- **Detach**: `Ctrl+Super+d`
+All zellij shortcuts use a **prefix key**: `Ctrl+a`, then:
+
+- `d` — detach
+- `t` — new tab
+- `n` — new pane
+- `x` — close pane
+- `i` / `o` — previous / next tab
+- `h/j/k/l` — move focus between panes
+- `1-5` — jump to tab by number
+- `s` — session manager
+- `Esc` — cancel (back to normal)
 - **Reattach**: `pixi run ze` (auto-reattaches to existing session)
-- **New tab**: `Ctrl+Super+t`
-- **Navigate tabs**: `Ctrl+Super+i` / `Ctrl+Super+o`
-- **Navigate panes**: `Ctrl+Super+h/j/k/l`
 
 ### Emacs
 
@@ -118,14 +125,6 @@ All languages have LSP, tree-sitter, and format-on-save enabled.
 ```sh
 claude
 ```
-
-Set your API key (once per machine):
-
-```sh
-export ANTHROPIC_API_KEY=sk-ant-...
-```
-
-Or add it to an `.envrc` file in your project directory — direnv will load it automatically.
 
 ## Adding a new tool
 
