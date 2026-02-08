@@ -4,7 +4,7 @@ if status is-interactive
     set -gx EMACSDIR $PIXI_PROJECT_ROOT/.doomemacs
     set -gx TERMINFO_DIRS $CONDA_PREFIX/share/terminfo:/usr/share/terminfo:/usr/lib/terminfo
 
-    alias emacs "TERM=xterm-256color emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
+    alias emacs "TERM=xterm-256color command emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 
     atuin init fish | source
     direnv hook fish | source
