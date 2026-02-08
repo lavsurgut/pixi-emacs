@@ -42,7 +42,7 @@ libpng = "*"
 build-emacs = "bash scripts/build-emacs.sh"
 install-clojure-tools = "bash scripts/install-clojure-tools.sh"
 install-doom = { cmd = "bash scripts/install-doom.sh", depends-on = ["build-emacs"] }
-setup = { cmd = "echo done", depends-on = ["install-doom", "install-clojure-tools"] }
+setup = { cmd = "echo ok", depends-on = ["install-doom", "install-clojure-tools"] }
 doom-sync = "DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs $PIXI_PROJECT_ROOT/.doomemacs/bin/doom sync"
 emacs = "XDG_CONFIG_HOME=$PIXI_PROJECT_ROOT/config DOOMDIR=$PIXI_PROJECT_ROOT/.doom.d EMACSDIR=$PIXI_PROJECT_ROOT/.doomemacs emacs -nw --init-directory=$PIXI_PROJECT_ROOT/.doomemacs"
 ze = "XDG_CONFIG_HOME=$PIXI_PROJECT_ROOT/config SHELL=$(which fish) zellij --config $PIXI_PROJECT_ROOT/config/zellij/config.kdl attach --create pixi-emacs"
