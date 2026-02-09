@@ -47,6 +47,7 @@ libjpeg-turbo = "*"
 giflib = "*"
 libtiff = "*"
 libpng = "*"
+openssh = ">=10.2p1,<11"
 
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
