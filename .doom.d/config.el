@@ -216,6 +216,19 @@
 (add-hook 'doom-switch-buffer-hook #'my-update-tabname)
 (add-hook 'doom-switch-window-hook #'my-update-tabname)
 
+;; --- Clipetty / OSC 52 ---
+
+;; Clipetty doesn't know about Zellij, so when SSH_TTY is set it writes
+;; directly to the (potentially stale) SSH PTY device, causing
+;; "Permission denied" errors on /dev/pts/X after reconnect.
+;; Zellij handles OSC 52 passthrough itself, so write to the local terminal.
+(after! clipetty
+  (defadvice! +tty--clipetty-tty-zellij-a (orig-fn ssh-tty tmux)
+    :around #'clipetty--tty
+    (if (getenv "ZELLIJ_SESSION_NAME")
+        (terminal-name)
+      (funcall orig-fn ssh-tty tmux))))
+
 ;; --- Vterm ---
 
 (after! vterm
