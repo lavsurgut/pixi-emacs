@@ -54,6 +54,11 @@ duckdb-cli = ">=1.4.4,<2"
 htop = "*"
 curl = "*"
 
+[activation.env]
+# DuckDB AWS extension needs CA certs visible inside pixi env (see duckdb/duckdb-aws#131)
+SSL_CERT_FILE = "$CONDA_PREFIX/ssl/cacert.pem"
+CURL_CA_BUNDLE = "$CONDA_PREFIX/ssl/cacert.pem"
+
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
 install-tools = "bash scripts/install-tools.sh"
