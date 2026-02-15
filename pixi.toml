@@ -49,6 +49,8 @@ libtiff = "*"
 libpng = "*"
 openssh = ">=10.2p1,<11"
 jq = ">=1.8.1,<2"
+postgresql = ">=18.2,<19"
+duckdb = ">=1.4.4,<2"
 
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
