@@ -50,7 +50,9 @@ libpng = "*"
 openssh = ">=10.2p1,<11"
 jq = ">=1.8.1,<2"
 postgresql = ">=18.2,<19"
-duckdb = ">=1.4.4,<2"
+duckdb-cli = ">=1.4.4,<2"
+htop = "*"
+curl = "*"
 
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
