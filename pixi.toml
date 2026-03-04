@@ -52,6 +52,7 @@ jq = ">=1.8.1,<2"
 postgresql = ">=18.2,<19"
 htop = "*"
 curl = "*"
+pixi-pycharm = ">=0.0.10,<0.0.11"
 
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
