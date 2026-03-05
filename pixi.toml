@@ -53,6 +53,7 @@ postgresql = ">=18.2,<19"
 htop = "*"
 curl = "*"
 pixi-pycharm = ">=0.0.10,<0.0.11"
+ansible = ">=12.0.0,<13"
 
 [tasks]
 build-emacs = "bash scripts/build-emacs.sh"
