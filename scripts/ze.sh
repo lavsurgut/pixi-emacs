@@ -8,11 +8,12 @@ export XDG_CONFIG_HOME="$PIXI_PROJECT_ROOT/config"
 export SHELL="$(which fish)"
 
 # Fix SSH agent forwarding for persistent sessions.
-# Creates a stable symlink so existing zellij sessions pick up a reconnected agent.
-if [ -n "${SSH_AUTH_SOCK:-}" ] && [ "$SSH_AUTH_SOCK" != "$HOME/.ssh/ssh_auth_sock" ]; then
+# Per-session stable symlink so multiple users don't clobber each other's agent.
+_ssh_sock="$HOME/.ssh/ssh_auth_sock_${SESSION}"
+if [ -n "${SSH_AUTH_SOCK:-}" ] && [ "$SSH_AUTH_SOCK" != "$_ssh_sock" ]; then
     mkdir -p "$HOME/.ssh"
-    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh_auth_sock"
+    ln -sf "$SSH_AUTH_SOCK" "$_ssh_sock"
 fi
-export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+export SSH_AUTH_SOCK="$_ssh_sock"
 
 exec zellij --config "$PIXI_PROJECT_ROOT/config/zellij/config.kdl" attach --create "$SESSION"
