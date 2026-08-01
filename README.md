@@ -125,6 +125,13 @@ All languages have LSP, tree-sitter, and format-on-save enabled.
 ```sh
 claude
 ```
+### Pi.dev
+
+[pi.dev](https://pi.dev/) is installed automatically. Run it from inside a zellij session:
+
+```sh
+pi
+```
 
 ## Adding a new tool
 
