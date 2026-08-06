@@ -2,7 +2,7 @@
 
 Doom Emacs dev environment via [Pixi](https://pixi.sh) — no Docker, no system packages.
 
-Supports **Python**, **Rust**, **Go**, and **Clojure** out of the box — with LSP, tree-sitter, and format-on-save for each.
+Supports **Python**, **Rust**, **Go**, **Clojure**, and **YAML** out of the box — with LSP, tree-sitter, and format-on-save for each.
 
 Works on macOS (ARM/Intel) and Linux (x86_64/aarch64). Emacs is built from source as a terminal-only binary, everything else comes from conda-forge. Includes Claude Code for AI-assisted development.
 
@@ -24,7 +24,7 @@ This will:
 1. Install all dependencies from conda-forge (including zellij, atuin, direnv, fish, nodejs)
 2. Download and compile Emacs 30.1 (terminal-only, ~5-10 min first time)
 3. Install CLI tools (clojure-lsp, babashka, clojure, saml2aws, Claude Code)
-4. Clone Doom Emacs and run `doom install` + `doom sync`
+4. Clone Doom Emacs, run `doom install` + `doom sync`, and install tree-sitter grammars
 
 ## Usage
 
@@ -115,6 +115,13 @@ All languages have LSP, tree-sitter, and format-on-save enabled.
 - `SPC m '` (or `, '`) — CIDER jack-in
 - `, e f` — eval form, `, e b` — eval buffer
 - Structural editing via evil-cleverparens: `H`/`L` for sexp navigation, `(`/`)` for up-sexp
+
+### YAML
+- LSP via yaml-language-server — install with `M-x lsp-install-server RET yamlls` (uses the bundled Node.js)
+- Tree-sitter grammar is installed by `doom-sync` (see `scripts/install-grammars.sh`)
+- Open a `.yaml`/`.yml` file and `yaml-ts-mode` + LSP connect automatically
+
+> The grammar is pinned to [`ikatyang/tree-sitter-yaml`](https://github.com/ikatyang/tree-sitter-yaml) (ABI 13). Doom's default source ships an ABI 15 parser, which our Emacs — linked against libtree-sitter 0.23 (`<0.24`, since Emacs 30.1 needs the `ts_language_version` symbol that 0.25 dropped) — can't load. See the override in `.doom.d/config.el`.
 
 ## AI tools
 

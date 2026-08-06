@@ -147,6 +147,18 @@
 
 (setq lsp-disabled-clients '(copilot-ls semgrep-ls))
 
+;; --- Tree-sitter ---
+
+;; Our Emacs is linked against conda-forge's libtree-sitter 0.23 (pinned
+;; <0.24 in pixi.toml, because Emacs 30.1 uses `ts_language_version', which
+;; libtree-sitter 0.25 removed). That supports grammar ABI <=14 only. Doom's
+;; bundled yaml recipe pulls tree-sitter-grammars/tree-sitter-yaml, whose HEAD
+;; ships an ABI 15 parser and fails to load ("version-mismatch: 15"). Pin yaml
+;; to ikatyang's grammar instead, which has an ABI 13 parser.c committed.
+(after! treesit
+  (setf (alist-get 'yaml treesit-language-source-alist)
+        '("https://github.com/ikatyang/tree-sitter-yaml")))
+
 ;; --- Corfu ---
 
 (after! corfu
